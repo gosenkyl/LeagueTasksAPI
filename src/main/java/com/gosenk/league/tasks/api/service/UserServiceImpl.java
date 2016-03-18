@@ -20,4 +20,9 @@ public class UserServiceImpl implements IUserService{
         return genericDAO.getAll(User.class);
     }
 
+    @Override
+    public User getUserById(int id){
+        return genericDAO.findById(User.class, id);
+    }
+
 }
