@@ -7,16 +7,15 @@ import com.gosenk.league.tasks.api.service.UserChampionServiceImpl;
 import com.gosenk.league.tasks.api.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/api")
 @RestController
+@CrossOrigin/*(origins = "http://domain2.com", maxAge = 3600)*/
+
 public class MainController {
 
     @Autowired
@@ -36,8 +35,13 @@ public class MainController {
         return userService.getUserById(id);
     }
 
-    @RequestMapping(value = "users/{id}/champs", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<UserChampion> userChampions(@PathVariable("id") Long id){
-        return userChampionService.getChampsByUserId(id);
+    @RequestMapping(value = {"users/{id}/champs", "users/{id}/champs/{champ}"}, method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<UserChampion> userChampions(@PathVariable("id") Long id, @PathVariable("champ") String champ){
+        return userChampionService.getChampsByUserId(id, champ);
     }
+
+ /*   @RequestMapping(value = "users/{id}/champs/{champ}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public UserChampion userChamp(@PathVariable("id") Long id, @PathVariable("champ") String champ){
+        return userChampionService.getChampByUserId(id);
+    }*/
 }
