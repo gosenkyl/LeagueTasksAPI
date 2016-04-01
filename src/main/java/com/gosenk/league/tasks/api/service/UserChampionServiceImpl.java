@@ -16,11 +16,18 @@ public class UserChampionServiceImpl {
     @Autowired
     private IGenericDAO genericDAO;
 
-    public List<UserChampion> getChampsByUserId(Long id, String champ){
+    public UserChampion getChampByUserId(Long id, String champ){
         String query = "from UserChampion where user.id = :id and championId = :champ";
         HashMap params = new HashMap<String, Object>();
         params.put("id", id);
         params.put("champ", champ);
+        return genericDAO.findSingleByQuery(query, params, UserChampion.class);
+    }
+
+    public List<UserChampion> getChampsByUserId(Long id){
+        String query = "from UserChampion where user.id = :id";
+        HashMap params = new HashMap<String, Object>();
+        params.put("id", id);
         return genericDAO.findByQuery(query, params, UserChampion.class);
     }
 }

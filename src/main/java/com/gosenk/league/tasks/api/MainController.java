@@ -1,5 +1,6 @@
 package com.gosenk.league.tasks.api;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gosenk.league.tasks.api.model.User;
 import com.gosenk.league.tasks.api.model.UserChampion;
 import com.gosenk.league.tasks.api.service.IUserService;
@@ -35,9 +36,15 @@ public class MainController {
         return userService.getUserById(id);
     }
 
-    @RequestMapping(value = {"users/{id}/champs", "users/{id}/champs/{champ}"}, method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<UserChampion> userChampions(@PathVariable("id") Long id, @PathVariable("champ") String champ){
-        return userChampionService.getChampsByUserId(id, champ);
+    @RequestMapping(value = "users/{id}/champs", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<UserChampion> userChampions(@PathVariable("id") Long id){
+        return userChampionService.getChampsByUserId(id);
+    }
+
+
+    @RequestMapping(value = "users/{id}/champs/{champ}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public UserChampion userChampion(@PathVariable("id") Long id, @PathVariable("champ") String champ){
+        return userChampionService.getChampByUserId(id, champ);
     }
 
  /*   @RequestMapping(value = "users/{id}/champs/{champ}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})

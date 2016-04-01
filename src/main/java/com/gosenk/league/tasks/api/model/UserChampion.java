@@ -1,6 +1,7 @@
 package com.gosenk.league.tasks.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -13,8 +14,9 @@ public class UserChampion {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "champion_id")
-    private String championId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "champion_id")
+    private Champion champion;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -37,12 +39,12 @@ public class UserChampion {
         this.id = id;
     }
 
-    public String getChampionId() {
-        return championId;
+    public Champion getChampion() {
+        return champion;
     }
 
-    public void setChampionId(String championId) {
-        this.championId = championId;
+    public void setChampion(Champion champion) {
+        this.champion = champion;
     }
 
     public User getUser() {
