@@ -1,5 +1,7 @@
 package com.gosenk.league.tasks.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,8 +17,8 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
-    @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name="user_id")
+    @OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+    @JsonIgnore
     private Set<UserChampion> userChampions;
 
 

@@ -14,18 +14,17 @@ public class UserChampion {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "champion_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     private Champion champion;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    /*@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
-    private Role role;
+    @JsonIgnore
+    private Role role;*/
 
 
 
@@ -55,11 +54,11 @@ public class UserChampion {
         this.user = user;
     }
 
-    public Role getRole() {
+    /*public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
-    }
+    }*/
 }
