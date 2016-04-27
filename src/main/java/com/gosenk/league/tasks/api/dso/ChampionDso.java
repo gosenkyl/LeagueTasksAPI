@@ -1,12 +1,11 @@
-package com.gosenk.league.tasks.api.model;
+package com.gosenk.league.tasks.api.dso;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "CHAMPION")
-public class Champion {
+public class ChampionDso {
 
     @Id
     @Column(name = "id")
@@ -23,18 +22,6 @@ public class Champion {
 
     @Column(name = "image")
     private String image;
-
-    @OneToMany(mappedBy = "champion", fetch = FetchType.EAGER)
-    private Set<UserChampion> userChampions;
-
-
-    public Set<UserChampion> getUserChampions() {
-        return userChampions;
-    }
-
-    public void setUserChampions(Set<UserChampion> userChampions) {
-        this.userChampions = userChampions;
-    }
 
     public String getId() {
         return id;

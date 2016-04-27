@@ -1,9 +1,6 @@
-package com.gosenk.league.tasks.api.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.gosenk.league.tasks.api.dso;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "USER")
@@ -16,12 +13,6 @@ public class User {
 
     @Column(name = "user_name")
     private String userName;
-
-    @OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-    @JsonIgnore
-    private Set<UserChampion> userChampions;
-
-
 
 
     public Long getId() {
@@ -40,11 +31,4 @@ public class User {
         this.userName = userName;
     }
 
-    public Set<UserChampion> getUserChampions() {
-        return userChampions;
-    }
-
-    public void setUserChampions(Set<UserChampion> userChampions) {
-        this.userChampions = userChampions;
-    }
 }

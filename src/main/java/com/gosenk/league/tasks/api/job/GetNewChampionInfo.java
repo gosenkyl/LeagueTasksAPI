@@ -1,6 +1,6 @@
-package com.gosenk.league.tasks.api;
+package com.gosenk.league.tasks.api.job;
 
-import com.gosenk.league.tasks.api.model.Champion;
+import com.gosenk.league.tasks.api.dso.ChampionDso;
 
 import java.io.*;
 import java.net.URL;
@@ -30,7 +30,7 @@ public final class GetNewChampionInfo {
                     String key = keys.next();
                     JSONObject val = (JSONObject) arr.get(key);
 
-                    Champion champ = createChampion(val);
+                    ChampionDso champ = createChampion(val);
                     // Store Champion via Hibernate
                     // Temporary, Generate Insert Statements
 
@@ -65,7 +65,7 @@ public final class GetNewChampionInfo {
         }
     }
 
-    private static String generateInsert(Champion champ){
+    private static String generateInsert(ChampionDso champ){
         StringBuilder sb = new StringBuilder();
 
         sb.append("INSERT INTO CHAMPION VALUES (");
@@ -83,17 +83,17 @@ public final class GetNewChampionInfo {
         return "'" + str.replace("'","''") + "'";
     }
 
-    private static Champion createChampion(JSONObject obj){
-        Champion champion = new Champion();
-        champion.setId((String) obj.get("id"));
-        champion.setKey(Long.parseLong((String) obj.get("key")));
-        champion.setName((String) obj.get("name"));
-        champion.setTitle((String) obj.get("title"));
+    private static ChampionDso createChampion(JSONObject obj){
+        ChampionDso championDso = new ChampionDso();
+        championDso.setId((String) obj.get("id"));
+        championDso.setKey(Long.parseLong((String) obj.get("key")));
+        championDso.setName((String) obj.get("name"));
+        championDso.setTitle((String) obj.get("title"));
 
         JSONObject img = (JSONObject) obj.get("image");
-        champion.setImage((String) img.get("full"));
+        championDso.setImage((String) img.get("full"));
 
-        return champion;
+        return championDso;
     }
 
     private static String readAll(Reader rd) throws IOException {

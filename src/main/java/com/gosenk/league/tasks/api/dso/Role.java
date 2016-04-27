@@ -1,4 +1,4 @@
-package com.gosenk.league.tasks.api.model;
+package com.gosenk.league.tasks.api.dso;
 
 import javax.persistence.*;
 
@@ -15,8 +15,6 @@ public class Role {
 
     @Column(name="lane")
     private String lane;
-
-
 
 
 
