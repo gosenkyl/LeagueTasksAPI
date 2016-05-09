@@ -13,6 +13,7 @@ import java.util.List;
 @CrossOrigin/*(origins = "http://domain2.com", maxAge = 3600)*/
 public class ChampionResource {
 
+
     @Autowired
     private ChampionService championService;
 
