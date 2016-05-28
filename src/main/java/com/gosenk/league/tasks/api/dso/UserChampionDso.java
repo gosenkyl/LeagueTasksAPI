@@ -7,9 +7,8 @@ import javax.persistence.*;
 public class UserChampionDso {
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private String id;
 
     @Column(name = "champion_id")
     private String championId;
@@ -21,11 +20,11 @@ public class UserChampionDso {
     private String roleId;
 
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

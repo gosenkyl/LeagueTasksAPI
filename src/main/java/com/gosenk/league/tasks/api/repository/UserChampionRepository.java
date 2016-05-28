@@ -11,4 +11,5 @@ public interface UserChampionRepository extends Repository<UserChampionDso, Long
 
     List<UserChampionDso> findByUserId(Long userId);
 
+    List<UserChampionDso> findByUserIdAndRoleId(Long userId, String roleId);
 }

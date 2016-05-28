@@ -1,0 +1,28 @@
+
+
+CREATE TABLE `league_tasks`.`champion` (
+  `id` VARCHAR(45) NOT NULL,
+  `key` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `title` VARCHAR(45) NULL,
+  `image` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `league_tasks`.`user` (
+  `id` INT NOT NULL,
+  `user_name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `league_tasks`.`user_champion` (
+  `id` INT NOT NULL,
+  `champion_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
+  `role_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `league_tasks`.`role` (
+  `id` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `lane` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+

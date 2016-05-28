@@ -2,17 +2,18 @@ package com.gosenk.league.tasks.api.dto;
 
 public class UserChampionDto {
 
-    private Long id;
+    private String id;
     private Long userId;
     private String roleId;
     private String championId;
 
+    private boolean selected;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,5 +39,13 @@ public class UserChampionDto {
 
     public void setChampionId(String championId) {
         this.championId = championId;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }
